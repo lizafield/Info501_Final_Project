@@ -36,21 +36,39 @@ st.title('Older Populations Living in Rural Areas')
 # ------------------------------
 # PART 1 : Filter Data
 # ------------------------------
+#importing the file, a temp countermeasure until I can get backblaze working correctly
+df = pd.read_csv('./Rural_vs_Urban_data.csv' , encoding='latin-1')
+
+#renaming column 
+r_df = df.rename(columns={"Value Numeric" : "Percentage"})
+
+#dropping unnecessary columns
+rural_df = r_df.drop(columns=['Indicator', 'Value String'])
+
+#creating new df that shows rows for 60+, both sexes, and rural areas.  This gives a good baseline to start with
+df_rural_60_mf = rural_df.loc[(rural_df['Age group'] == '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural')]
 
 
+# ------------------------------
+# PART 2 : YOY by Income/Region
+# ------------------------------
+
+st.write(
+'''
+### Rural Populations 1980 to 2015
+Below are graphs depicting the change in people aged 60+ living in rural areas.  Countries are grouped by World Bank Income Groups (figure 1) and WHO Reguin (figure 2). 
+'''
+)
 
 
+#grouped by income group
+grouped_f1 = df_rural_60_mf.groupby(['World bank income group', 'Year'])['Percentage'].mean()
+flat_f1 = grouped_f1.reset_index()
 
-
-
-
-
-
-
-
-
-
-
+fig_1 = px.line(flat_f1, x = 'Year', y = 'Percentage', color = 'World bank income group', color_discrete_sequence = ['#332288','#44AA99','#88CCEE','#CC6677'],
+               width = 1000, height = 600, markers = True)
+fig_1.update_yaxes(range=[0,100])
+st.plotly_chart(fig_1, use_container_width = True)
 
 
 
