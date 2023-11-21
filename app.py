@@ -56,7 +56,7 @@ df_rural_60_mf = rural_df.loc[(rural_df['Age group'] == '60+') & (rural_df['Sex'
 st.write(
 '''
 ### Rural Populations 1980 to 2015
-Below are graphs depicting the change in people aged 60+ living in rural areas.  Countries are grouped by World Bank Income Groups (figure 1) and WHO Reguin (figure 2). 
+Below are graphs depicting the change in people aged 60+ living in rural areas.  Countries are grouped by World Bank Income Groups (figure 1) and WHO Region (figure 2). 
 '''
 )
 
@@ -70,6 +70,15 @@ fig_1 = px.line(flat_f1, x = 'Year', y = 'Percentage', color = 'World bank incom
 fig_1.update_yaxes(range=[0,100])
 st.plotly_chart(fig_1, use_container_width = True)
 
+
+#grouped by WHO Region
+grouped_f2 = df_rural_60_mf.groupby(['WHO region', 'Year'])['Percentage'].mean()
+flat_f2 = grouped_f2.reset_index()
+
+fig_2 = px.line(flat_f2, x = 'Year', y = 'Percentage', color = 'WHO region', color_discrete_sequence = ['#332288','#44AA99','#882255','#CC6677','#DDCC77','#88CCEE'],
+               width = 1000, height = 600, markers = True)
+fig_2.update_yaxes(range=[0,100])
+st.plotly_chart(fig_2, use_container_width = True)
 
 
 
