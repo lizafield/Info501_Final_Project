@@ -71,13 +71,12 @@ st.line_chart(flat_f1, x = 'Year', y = 'Percentage', color = 'World bank income 
 
 
 #grouped by WHO Region
-#grouped_f2 = df_rural_60_mf.groupby(['WHO region', 'Year'])['Percentage'].mean()
-#flat_f2 = grouped_f2.reset_index()
+grouped_f2 = df_rural_60_mf.groupby(['WHO region', 'Year'])['Percentage'].mean()
+flat_f2 = grouped_f2.reset_index()
 
-#fig_2 = px.line(flat_f2, x = 'Year', y = 'Percentage', color = 'WHO region', color_discrete_sequence = ['#332288','#44AA99','#882255','#CC6677','#DDCC77','#88CCEE'],
-              # width = 1000, height = 600, markers = True)
-#fig_2.update_yaxes(range=[0,100])
-#st.plotly_chart(fig_2, use_container_width = True)
+st.line_chart(flat_f2, x = 'Year', y = 'Percentage', color = 'WHO region', color_discrete_sequence = ['#332288','#44AA99','#882255','#CC6677','#DDCC77','#88CCEE'],
+               width = 1000, height = 600)
+
 
 
 
