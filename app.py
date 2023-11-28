@@ -74,7 +74,7 @@ st.line_chart(flat_f1, x = 'Year', y = 'Percentage', color = 'World bank income 
 grouped_f2 = df_rural_60_mf.groupby(['WHO region', 'Year'])['Percentage'].mean()
 flat_f2 = grouped_f2.reset_index()
 
-st.line_chart(flat_f2, x = 'Year', y = 'Percentage', color = 'WHO region', color_discrete_sequence = ['#332288','#44AA99','#882255','#CC6677','#DDCC77','#88CCEE'],
+st.line_chart(flat_f2, x = 'Year', y = 'Percentage', color = 'WHO region', #color_discrete_sequence = ['#332288','#44AA99','#882255','#CC6677','#DDCC77','#88CCEE'],
                width = 1000, height = 600)
 
 
