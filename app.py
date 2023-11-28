@@ -17,12 +17,12 @@ rural_data = 'Rural_vs_Urban_date.csv'
 # ------------------------------------------------------
 #                        CONFIG
 # ------------------------------------------------------
-#load_dotenv()
+load_dotenv()
 
-# load Backblaze connection
-#b2 = B2(endpoint=os.environ['B2_ENDPOINT'],
-       # key_id=os.environ['B2_KEYID'],
-       # secret_key=os.environ['B2_APPKEY'])
+load Backblaze connection
+b2 = B2(endpoint=os.environ['B2_ENDPOINT'],
+       key_id=os.environ['B2_KEYID'],
+       secret_key=os.environ['B2_APPKEY'])
 
 
 
