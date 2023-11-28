@@ -2,7 +2,7 @@ name: simple-streamlit
 dependencies:
   - python=3.10
   - pip
-  - conda:
+  - pip:
     - ﻿boto3==1.29.4
     - ﻿botocore==1.32.4
     - ﻿dash==2.13.0
