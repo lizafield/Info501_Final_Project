@@ -10,4 +10,5 @@ dependencies:
     - scikit-learn
     - boto3
     - ipykernel
-    - plotly
+    - plotly==5.17.0
+    - plotly-express==0.4.1
