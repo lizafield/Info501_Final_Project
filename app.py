@@ -97,7 +97,7 @@ sel_country = st.selectbox(
        'Country', countries_list)
 
 #temp data frame for selected country
-sel_country_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Country'] == 'Algeria')]
+sel_country_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Country'] == 'Algeria')].reset_index()
 
 st.dataframe(sel_country_df)
 #st.line_chart(sel_country_df, x = 'Year', y = 'Percentage', color = 'Age group')
