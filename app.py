@@ -99,5 +99,9 @@ sel_country = st.selectbox(
 #temp data frame for selected country
 sel_country_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Country'] == 'Algeria')].reset_index()
 
-st.dataframe(sel_country_df)
+#testing if this makes the graph
+grouped_f3 = sel_country_df.groupby(['Age group', 'Year'])['Percentage'].mean()
+flat_f3 = grouped_f3.reset_index()
+
+st.dataframe(flat_f3)
 #st.line_chart(sel_country_df, x = 'Year', y = 'Percentage', color = 'Age group')
