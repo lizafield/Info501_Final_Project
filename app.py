@@ -4,7 +4,7 @@ import plotly.express as px
 import streamlit as st
 from dotenv import load_dotenv
 
-from utils.b2 import B2
+#from utils.b2 import B2
 
 
 # ------------------------------------------------------
