@@ -84,18 +84,22 @@ st.line_chart(flat_f2, x = 'Year', y = 'Percentage', color = 'WHO region', #colo
 
 st.write(
 '''
-### Rural Populations 1980 to 2015
-Below are graphs depicting the change in people aged 60+ living in rural areas.  Countries are grouped by World Bank Income Groups (figure 1) and WHO Region (figure 2). 
+### Change in Older Populations Living in Poverty by Age Group
+Here, you can select a country to see how their older populations living in rural areas have changed over time.  This shows different age groups, starting with 60-64. 
 '''
 )
 
+#list of countries to select from
 countries_list = rural_df.Country.unique()
 
+#dropdown selection for an individual country
 sel_country = st.selectbox(
        'Country', countries_list)
 
-st.write('You selected:', sel_country)
+#temp data frame for selected country
+sel_country_df = rural_df.loc[(rural_df['Age group'] !== '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Country' == sel_country)]
 
+st.line_chart(sel_country_df, x = 'Year', y = 'Percentage', color = 'Age group', #color_discrete_sequence = ['#332288','#44AA99','#882255','#CC6677','#DDCC77','#88CCEE'])
 
 
 
