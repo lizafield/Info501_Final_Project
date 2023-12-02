@@ -97,9 +97,9 @@ sel_country = st.selectbox(
        'Country', countries_list)
 
 #temp data frame for selected country
-sel_country_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Country'] == 'Algeria')].reset_index()
+sel_country_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Country'] == sel_country)].reset_index()
 
-#testing if this makes the graph
+#formatting a functioning table for the graph
 grouped_f3 = sel_country_df.groupby(['Age group', 'Year'])['Percentage'].mean()
 flat_f3 = grouped_f3.reset_index()
 
