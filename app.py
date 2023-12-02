@@ -139,7 +139,7 @@ fig4 = px.histogram(
               'Low income',
               'Lower middle income',
               'Upper middle income',
-              'High income']
+              'High income']}
 )
 
 #plotly chart to streamlit chart
