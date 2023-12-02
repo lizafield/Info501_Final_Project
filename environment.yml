@@ -1,0 +1,11 @@
+name: older-rural-populations.streamlit
+dependencies:
+  - python=3.9.18
+  - pip
+  - pip:
+    - pandas
+    - python-dotenv
+    - matplotlib
+    - streamlit
+    - ipykernel
+    - plotly.express
