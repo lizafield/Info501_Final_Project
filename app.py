@@ -84,7 +84,7 @@ st.line_chart(flat_f2, x = 'Year', y = 'Percentage', color = 'WHO region', #colo
 
 st.write(
 '''
-### Change in Older Populations Living in Poverty by Age Group
+### Change in Older Populations Living in Rural Areas by Age Group
 Here, you can select a country to see how their older populations living in rural areas have changed over time.  This shows different age groups, starting with 60-64. 
 '''
 )
@@ -103,5 +103,45 @@ sel_country_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'
 grouped_f3 = sel_country_df.groupby(['Age group', 'Year'])['Percentage'].mean()
 flat_f3 = grouped_f3.reset_index()
 
-st.dataframe(flat_f3)
 st.line_chart(flat_f3, x = 'Year', y = 'Percentage', color = 'Age group')
+
+
+# ------------------------------
+# PART 4 : Age Groups by Econ Level (Year selected)
+# ------------------------------
+
+st.write(
+'''
+### Age Groups living Rurally by Economic Level
+How do the different age groups compare across the different World Bank income groups?  See the chart below.  
+'''
+)
+
+#list of years to select from
+year_list = rural_df.Year.unique()
+
+#dropdown selection for an individual country
+sel_year = st.selectbox(
+       'Year', year_list)
+
+#temp data frame for selected year
+sel_year_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year)].reset_index()
+
+#formatting a functioning table for the graph
+grouped_f4 = sel_year_df.groupby(['Age group', 'World bank income group'])['Percentage'].mean()
+flat_f4 = grouped_f4.reset_index()
+
+#creating plotly grouped bar chart
+fig4 = px.histogram(flat_f4, x = 'World bank income group', y = 'Percentage', color = 'Age group')
+
+#plotly chart to streamlit chart
+st.plotly_chart(fig4)
+
+
+
+
+
+
+
+
+
