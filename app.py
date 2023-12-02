@@ -89,7 +89,7 @@ Below are graphs depicting the change in people aged 60+ living in rural areas. 
 '''
 )
 
-countries_list = rural_df.Country.unique
+countries_list = rural_df.Country.unique()
 
 sel_country = st.selectbox(
        'Country', countries_list)
