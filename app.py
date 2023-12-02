@@ -132,7 +132,15 @@ grouped_f4 = sel_year_df.groupby(['Age group', 'World bank income group'])['Perc
 flat_f4 = grouped_f4.reset_index()
 
 #creating plotly grouped bar chart
-fig4 = px.histogram(flat_f4, x = 'World bank income group', y = 'Percentage', color = 'Age group', barmode = 'group')
+fig4 = px.histogram(
+       flat_f4, x = 'World bank income group', y = 'Percentage', color = 'Age group', 
+       barmode = 'group', 
+       category_orders = {'World bank income group': [
+              'Low income',
+              'Lower middle income',
+              'Upper middle income',
+              'High income']
+)
 
 #plotly chart to streamlit chart
 st.plotly_chart(fig4)
