@@ -104,4 +104,4 @@ grouped_f3 = sel_country_df.groupby(['Age group', 'Year'])['Percentage'].mean()
 flat_f3 = grouped_f3.reset_index()
 
 st.dataframe(flat_f3)
-#st.line_chart(sel_country_df, x = 'Year', y = 'Percentage', color = 'Age group')
+st.line_chart(flat_f3, x = 'Year', y = 'Percentage', color = 'Age group')
