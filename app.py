@@ -67,7 +67,7 @@ Below are graphs depicting the change in people aged 60+ living in rural areas. 
 grouped_f1 = df_rural_60_mf.groupby(['World bank income group', 'Year'])['Percentage'].mean()
 flat_f1 = grouped_f1.reset_index()
 
-st.line_chart(flat_f1, x = 'Year', y = 'Percentage', color = 'World bank income group', #color_discrete_sequence = ['#332288','#44AA99','#88CCEE','#CC6677'],
+st.line_chart(flat_f1, x = 'Year', y = 'Percentage', color = 'World bank income group',
                width = 1000, height = 600)
 
 
@@ -76,7 +76,7 @@ st.line_chart(flat_f1, x = 'Year', y = 'Percentage', color = 'World bank income 
 grouped_f2 = df_rural_60_mf.groupby(['WHO region', 'Year'])['Percentage'].mean()
 flat_f2 = grouped_f2.reset_index()
 
-st.line_chart(flat_f2, x = 'Year', y = 'Percentage', color = 'WHO region', #color_discrete_sequence = ['#332288','#44AA99','#882255','#CC6677','#DDCC77','#88CCEE'],
+st.line_chart(flat_f2, x = 'Year', y = 'Percentage', color = 'WHO region', 
                width = 1000, height = 600)
 
 
@@ -221,17 +221,19 @@ sel_age = st.selectbox(
 #temp data frame for high income
 f6_high = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] != "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'High income')].reset_index()
 
-#high income formatting a functioning table for the graph
+#high income formatting a functioning table for the graph and graph
 gr_f6_high = f6_high.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_high = gr_f6_high.reset_index()
+plot_f6_high = px.line(flat_f6_high, x = "Year", y = "Percentage", color = 'Sex', title = 'High Income')
 
 ###upper middle income###
 #temp data frame for upper middle income
 f6_upmid = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] != "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Upper middle income')].reset_index()
 
-#upper middle income formatting a functioning table for the graph
+#upper middle income formatting a functioning table for the graph and graph
 gr_f6_upmid = f6_upmid.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_upmid = gr_f6_upmid.reset_index()
+plot_f6_upmid = px.line(flat_f6_upmid, x = "Year", y = "Percentage", color = 'Sex', title = 'Upper Middle Income')
 
 ###lower middle income###
 #temp data frame for lower middle income
@@ -240,6 +242,7 @@ f6_lowmid = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] !
 #lower middle income formatting a functioning table for the graph
 gr_f6_lowmid = f6_lowmid.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_lowmid = gr_f6_lowmid.reset_index()
+plot_f6_lowmid = px.line(flat_f6_lowmid, x = "Year", y = "Percentage", color = 'Sex', title = 'Lower Middle Income')
 
 ###low income###
 #temp data frame for low income
@@ -248,23 +251,18 @@ f6_low = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] != "
 #low income formatting a functioning table for the graph
 gr_f6_low = f6_low.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_low = gr_f6_low.reset_index()
+plot_f6_low = px.line(flat_f6_low, x = "Year", y = "Percentage", color = 'Sex', title = 'Low Income')
 
 
 ###GRAPH CREATION###
 
 fig6 = make_subplots(rows=2, cols=2, start_cell="bottom-left")
 
-fig6.add_trace(go.line(flat_f6_low, x = 'Year', y = 'Percentage', color = 'Sex'),
-              row = 1, col = 1)
-
-fig6.add_trace(go.line(flat_f6_lowmid, x = 'Year', y = 'Percentage', color = 'Sex'),
-              row = 1, col = 2)
-
-fig6.add_trace(go.line(flat_f6_upmid, x = 'Year', y = 'Percentage', color = 'Sex'),
-              row = 2, col = 1)
-
-fig6.add_trace(go.line(flat_f6_high, x = 'Year', y = 'Percentage', color = 'Sex'),
-              row = 2, col = 2)
+fig = tools.make_subplots(rows=2, cols=2)
+fig.append_trace(plot_f6_low, 1, 1)
+fig.append_trace(plot_f6_lowmid, 1, 2)
+fig.append_trace(plot_f6_upmid, 2, 1)
+fig.append_trace(plot_f6_high, 2, 2)
 
 st.plotly_chart(fig6)
 
