@@ -168,6 +168,8 @@ sel_year5 = st.selectbox(
 #temp data frame for selected year
 sel_year5_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year5)].reset_index()
 
+#-----Lowest Table
+
 #formatting a functioning table for lowest
 grouped_f5 = sel_year5_df.groupby(['Country'])['Percentage'].mean()
 sorted_f5 = grouped_f5.sort_values().head(10)
@@ -175,6 +177,24 @@ flat_f5 = sorted_f5.reset_index()
 
 #lowest table
 st.dataframe(flat_f5)
+
+#-----Highest Table
+
+#formatting a functioning table for highest
+grouped_f5h = sel_year5_df.groupby(['Country'])['Percentage'].mean()
+sorted_f5h = grouped_f5h.sort_values(ascending=False).head(10)
+flat_f5h = sorted_f5h.reset_index()
+
+#lowest table
+st.dataframe(flat_f5h)
+
+
+
+
+
+
+
+
 
 
 
