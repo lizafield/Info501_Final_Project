@@ -222,12 +222,18 @@ sel_age = st.selectbox(
 ###HIGH INCOME - MALE###
 #temp data frame for high income
 f6_high_m = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Male") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'High income')].reset_index()
-f6_high_f = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Female") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'High income')].reset_index()
 
 #high income formatting a functioning table for the graph and graph
-#gr_f6_high = f6_high.groupby(['Sex', 'Year'])['Percentage'].mean()
-#flat_f6_high = gr_f6_high.reset_index()
-#plot_f6_high = go.Scatter(flat_f6_high, x = "Year", y = "Percentage", color = 'Sex', mode = 'lines', title = 'High Income')
+gr_f6_high_m = f6_high_m.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_high_m = gr_f6_high_m.reset_index()
+#plot_f6_high_m = go.Scatter(flat_f6_high, x = "Year", y = "Percentage", color = 'Sex', mode = 'lines', title = 'High Income')
+
+###HIGH INCOME - FEMALE###
+f6_high_f = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Female") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'High income')].reset_index()
+gr_f6_high_f = f6_high_f.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_high_f = gr_f6_high_f.reset_index()
+
+
 
 ###upper middle income###
 #temp data frame for upper middle income
@@ -260,13 +266,13 @@ f6_high_f = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] =
 ###GRAPH CREATION###
 
 fig_f6, axs = plt.subplots(2, 2)
-axs[0, 0].plot(f6_high_m['Year'], f6_high_m['Percentage'], 'tab:blue')
+axs[0, 0].plot(flat_f6_high_m['Year'], f6_high_m['Percentage'], 'tab:blue')
 #axs[0, 0].set_title('Axis [0, 0]')
-axs[0, 1].plot(f6_high_f['Year'], f6_high_f['Percentage'], 'tab:red')
+axs[0, 1].plot(flat_f6_high_f['Year'], f6_high_f['Percentage'], 'tab:red')
 #axs[0, 1].set_title('Axis [0, 1]')
-axs[1, 0].plot(f6_high_m['Year'], f6_high_m['Percentage'], 'tab:green')
+axs[1, 0].plot(flat_f6_high_m['Year'], f6_high_m['Percentage'], 'tab:green')
 #axs[1, 0].set_title('Axis [1, 0]')
-axs[1, 1].plot(f6_high_f['Year'], f6_high_f['Percentage'], 'tab:orange')
+axs[1, 1].plot(flat_f6_high_f['Year'], f6_high_f['Percentage'], 'tab:orange')
 #axs[1, 1].set_title('Axis [1, 1]')
 
 #for ax in axs.flat:
