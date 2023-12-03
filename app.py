@@ -150,6 +150,7 @@ st.plotly_chart(fig4)
 # PART 5 : Highest and Lowest Percentage Each Year (Year selected)
 # ------------------------------
 
+
 st.write(
 '''
 ### Which Countries had the Highest and Lowest portions of their Older Populations living Rurally?
@@ -167,12 +168,12 @@ sel_year5 = st.selectbox(
 #temp data frame for selected year
 sel_year5_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year5)].reset_index()
 
-#formatting a functioning table for the graph
+#formatting a functioning table for lowest
 grouped_f5 = sel_year5_df.groupby(['Country'])['Percentage'].mean()
-sorted_f5 = grouped_f5.sort_values()
+sorted_f5 = grouped_f5.sort_values().head(10)
 flat_f5 = sorted_f5.reset_index()
 
-
+#lowest table
 st.dataframe(flat_f5)
 
 
