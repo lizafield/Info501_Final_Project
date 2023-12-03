@@ -168,7 +168,8 @@ sel_year5 = st.selectbox(
 sel_year5_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year5)].reset_index()
 
 #formatting a functioning table for the graph
-grouped_f5 = sel_year5_df.groupby(['Age group', 'World bank income group'])['Percentage'].mean()
+grouped_f5 = sel_year5_df.groupby(['Country'])['Percentage'].mean()
+sorted_f5 = grouped_f5.sort_values(by = ['Percentage'])
 flat_f5 = grouped_f5.reset_index()
 
 st.dataframe(flat_f5)
