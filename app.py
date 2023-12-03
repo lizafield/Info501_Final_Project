@@ -158,17 +158,17 @@ Which countries yada yada
 )
 
 #list of years to select from
-year_list2 = rural_df.Year.unique()
+year_list5 = rural_df.Year.unique()
 
 #dropdown selection for an individual year
-sel_year2 = st.selectbox(
-       'Year', year_list2)
+sel_year5 = st.selectbox(
+       'Year', year_list5)
 
 #temp data frame for selected year
-sel_year_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year2)].reset_index()
+sel_year5_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year5)].reset_index()
 
 #formatting a functioning table for the graph
-grouped_f5 = sel_year_df.groupby(['Age group', 'World bank income group'])['Percentage'].mean().sort
+grouped_f5 = sel_year5_df.groupby(['Age group', 'World bank income group'])['Percentage'].mean().sort
 flat_f5 = grouped_f5.reset_index()
 
 st.dataframe(flat_f5)
