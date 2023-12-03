@@ -260,10 +260,10 @@ plot_f6_low = px.line(flat_f6_low, x = "Year", y = "Percentage", color = 'Sex', 
 fig6 = make_subplots(rows=2, cols=2, start_cell="bottom-left")
 
 fig = tools.make_subplots(rows=2, cols=2)
-fig.append_trace(plot_f6_low, 1, 1)
-fig.append_trace(plot_f6_lowmid, 1, 2)
-fig.append_trace(plot_f6_upmid, 2, 1)
-fig.append_trace(plot_f6_high, 2, 2)
+fig.add_traces(plot_f6_low, 1, 1)
+fig.add_traces(plot_f6_lowmid, 1, 2)
+fig.add_traces(plot_f6_upmid, 2, 1)
+fig.add_traces(plot_f6_high, 2, 2)
 
 st.plotly_chart(fig6)
 
