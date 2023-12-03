@@ -217,13 +217,37 @@ sel_age = st.selectbox(
        'Age_group', age_list, key = 'f6')
 
 
-
+###high income###
 #temp data frame for high income
-#f6_high = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year)].reset_index()
+f6_high = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] != "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'High income')].reset_index()
 
-#formatting a functioning table for the graph
-#grouped_f4 = sel_year_df.groupby(['Age group', 'World bank income group'])['Percentage'].mean()
-#flat_f4 = grouped_f4.reset_index()
+#high income formatting a functioning table for the graph
+gr_f6_high = f6_high.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_high = gr_f6_high.reset_index()
+
+###upper middle income###
+#temp data frame for upper middle income
+f6_upmid = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] != "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Upper middle income')].reset_index()
+
+#upper middle income formatting a functioning table for the graph
+gr_f6_upmid = f6_upmid.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_upmid = gr_f6_upmid.reset_index()
+
+###lower middle income###
+#temp data frame for lower middle income
+f6_lowmid = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] != "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Lower middle income')].reset_index()
+
+#lower middle income formatting a functioning table for the graph
+gr_f6_lowmid = f6_lowmid.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_lowmid = gr_f6_lowmid.reset_index()
+
+###low income###
+#temp data frame for low income
+f6_low = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] != "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Low Income')].reset_index()
+
+#low income formatting a functioning table for the graph
+gr_f6_low = f6_low.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_low = gr_f6_low.reset_index()
 
 
 
