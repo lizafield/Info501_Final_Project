@@ -225,7 +225,7 @@ f6_high = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] != 
 #high income formatting a functioning table for the graph and graph
 gr_f6_high = f6_high.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_high = gr_f6_high.reset_index()
-plot_f6_high = px.line(flat_f6_high, x = "Year", y = "Percentage", color = 'Sex', title = 'High Income')
+plot_f6_high = go.Scatter(flat_f6_high, x = "Year", y = "Percentage", color = 'Sex', mode = 'lines', title = 'High Income')
 
 ###upper middle income###
 #temp data frame for upper middle income
@@ -234,7 +234,7 @@ f6_upmid = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] !=
 #upper middle income formatting a functioning table for the graph and graph
 gr_f6_upmid = f6_upmid.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_upmid = gr_f6_upmid.reset_index()
-plot_f6_upmid = px.line(flat_f6_upmid, x = "Year", y = "Percentage", color = 'Sex', title = 'Upper Middle Income')
+plot_f6_upmid = go.Scatter(flat_f6_upmid, x = "Year", y = "Percentage", color = 'Sex', mode = 'lines', title = 'Upper Middle Income')
 
 ###lower middle income###
 #temp data frame for lower middle income
@@ -243,7 +243,7 @@ f6_lowmid = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] !
 #lower middle income formatting a functioning table for the graph
 gr_f6_lowmid = f6_lowmid.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_lowmid = gr_f6_lowmid.reset_index()
-plot_f6_lowmid = px.line(flat_f6_lowmid, x = "Year", y = "Percentage", color = 'Sex', title = 'Lower Middle Income')
+plot_f6_lowmid = go.Scatter(flat_f6_lowmid, x = "Year", y = "Percentage", color = 'Sex', mode = 'lines', title = 'Lower Middle Income')
 
 ###low income###
 #temp data frame for low income
@@ -252,7 +252,7 @@ f6_low = rural_df.loc[(rural_df['Age group'] != sel_age) & (rural_df['Sex'] != "
 #low income formatting a functioning table for the graph
 gr_f6_low = f6_low.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_low = gr_f6_low.reset_index()
-plot_f6_low = px.line(flat_f6_low, x = "Year", y = "Percentage", color = 'Sex', title = 'Low Income')
+plot_f6_low = go.Scatter(flat_f6_low, x = "Year", y = "Percentage", color = 'Sex', mode = 'lines', title = 'Low Income')
 
 
 ###GRAPH CREATION###
