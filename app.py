@@ -158,8 +158,6 @@ Which countries yada yada
 '''
 )
 
-tbl1, tbl2 = st.columns(2)
-
 #list of years to select from
 year_list5 = rural_df.Year.unique()
 
@@ -178,7 +176,7 @@ sorted_f5 = grouped_f5.sort_values().head(10)
 flat_f5 = sorted_f5.reset_index()
 
 #lowest table
-tbl1.st.dataframe(flat_f5)
+st.dataframe(flat_f5)
 
 #-----Highest Table
 
@@ -187,8 +185,8 @@ grouped_f5h = sel_year5_df.groupby(['Country'])['Percentage'].mean()
 sorted_f5h = grouped_f5h.sort_values(ascending=False).head(10)
 flat_f5h = sorted_f5h.reset_index()
 
-#lowest table
-tbl2.st.dataframe(flat_f5h)
+#highest table
+st.dataframe(flat_f5h)
 
 
 
