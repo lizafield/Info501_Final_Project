@@ -260,13 +260,13 @@ f6_high_f = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] =
 ###GRAPH CREATION###
 
 fig_f6, axs = plt.subplots(2, 2)
-axs[0, 0].plot(f6_high_m['Year'], f6_high_m['Percentage]', 'tab:blue')
+axs[0, 0].plot(f6_high_m['Year'], f6_high_m['Percentage'], 'tab:blue')
 #axs[0, 0].set_title('Axis [0, 0]')
-axs[0, 1].plot(f6_high_f['Year'], f6_high_f['Percentage]', 'tab:red')
+axs[0, 1].plot(f6_high_f['Year'], f6_high_f['Percentage'], 'tab:red')
 #axs[0, 1].set_title('Axis [0, 1]')
-axs[1, 0].plot(f6_high_m['Year'], f6_high_m['Percentage]', 'tab:green')
+axs[1, 0].plot(f6_high_m['Year'], f6_high_m['Percentage'], 'tab:green')
 #axs[1, 0].set_title('Axis [1, 0]')
-axs[1, 1].plot(f6_high_f['Year'], f6_high_f['Percentage]', 'tab:orange')
+axs[1, 1].plot(f6_high_f['Year'], f6_high_f['Percentage'], 'tab:orange')
 #axs[1, 1].set_title('Axis [1, 1]')
 
 #for ax in axs.flat:
