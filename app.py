@@ -5,6 +5,7 @@ import streamlit as st
 from dotenv import load_dotenv
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from plotly import tools
 
 #from utils.b2 import B2
 
