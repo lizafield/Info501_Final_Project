@@ -122,7 +122,7 @@ year_list = rural_df.Year.unique()
 
 #dropdown selection for an individual year
 sel_year = st.selectbox(
-       'Year', year_list)
+       'Year', year_list, key = 'f4')
 
 #temp data frame for selected year
 sel_year_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year)].reset_index()
@@ -162,7 +162,7 @@ year_list5 = rural_df.Year.unique()
 
 #dropdown selection for an individual year
 sel_year5 = st.selectbox(
-       'Year', year_list5)
+       'Year', year_list5, key = 'f5')
 
 #temp data frame for selected year
 sel_year5_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year5)].reset_index()
