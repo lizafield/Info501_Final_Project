@@ -120,7 +120,7 @@ How do the different age groups compare across the different World Bank income g
 #list of years to select from
 year_list = rural_df.Year.unique()
 
-#dropdown selection for an individual country
+#dropdown selection for an individual year
 sel_year = st.selectbox(
        'Year', year_list)
 
@@ -145,6 +145,33 @@ fig4 = px.histogram(
 #plotly chart to streamlit chart
 st.plotly_chart(fig4)
 
+
+# ------------------------------
+# PART 5 : Highest and Lowest Percentage Each Year (Year selected)
+# ------------------------------
+
+st.write(
+'''
+### Which Countries had the Highest and Lowest portions of their Older Populations living Rurally?
+Which countries yada yada  
+'''
+)
+
+#list of years to select from
+year_list2 = rural_df.Year.unique()
+
+#dropdown selection for an individual year
+sel_year2 = st.selectbox(
+       'Year', year_list2)
+
+#temp data frame for selected year
+sel_year_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year2)].reset_index()
+
+#formatting a functioning table for the graph
+grouped_f5 = sel_year_df.groupby(['Age group', 'World bank income group'])['Percentage'].mean().sort
+flat_f5 = grouped_f5.reset_index()
+
+st.dataframe(flat_f5)
 
 
 
