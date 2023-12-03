@@ -3,6 +3,8 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 from dotenv import load_dotenv
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 #from utils.b2 import B2
 
@@ -191,8 +193,56 @@ st.dataframe(flat_f5h)
 
 
 
+# ------------------------------
+# PART 6 : Difference between Men and Women by Econ Group YOY
+# ------------------------------
 
 
+st.write(
+'''
+### How do men and women compare across different economic regions?
+Which countries yada yada  
+'''
+)
+
+####SELECT AGE GROUP######
+#renaming age group column
+f6_df = rural_df.rename(columns={"Age group" : "Age_group"})
+
+#list of age groups to select from
+age_list = f6_df.Age_group.unique()
+
+#dropdown selection for an individual year
+sel_age = st.selectbox(
+       'Age_group', age_list, key = 'f6')
+
+
+
+#temp data frame for high income
+#f6_high = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year)].reset_index()
+
+#formatting a functioning table for the graph
+#grouped_f4 = sel_year_df.groupby(['Age group', 'World bank income group'])['Percentage'].mean()
+#flat_f4 = grouped_f4.reset_index()
+
+
+
+
+#fig6 = make_subplots(rows=2, cols=2, start_cell="bottom-left")
+
+#fig6.add_trace(go.Scatter(x=[1, 2, 3], y=[4, 5, 6]),
+              #row=1, col=1)
+
+#fig6.add_trace(go.Scatter(x=[20, 30, 40], y=[50, 60, 70]),
+            #  row=1, col=2)
+
+#fig6.add_trace(go.Scatter(x=[300, 400, 500], y=[600, 700, 800]),
+         #     row=2, col=1)
+
+#fig6.add_trace(go.Scatter(x=[4000, 5000, 6000], y=[7000, 8000, 9000]),
+             # row=2, col=2)
+
+#fig6.show()
 
 
 
