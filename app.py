@@ -275,12 +275,18 @@ axs[0, 0].set_ylim(bottom=0, top=100)
 axs[0, 1].plot(flat_f6_lowmid_m['Year'], flat_f6_lowmid_m['Percentage'], 'tab:blue')
 axs[0, 1].plot(flat_f6_lowmid_f['Year'], flat_f6_lowmid_f['Percentage'], 'tab:red')
 axs[0, 1].set_title('Lower Middle Income')
+axs[0, 1].set_xlim(left=1980, right=2015)
+axs[0, 1].set_ylim(bottom=0, top=100)
 axs[1, 0].plot(flat_f6_upmid_m['Year'], flat_f6_upmid_m['Percentage'], 'tab:blue')
 axs[1, 0].plot(flat_f6_upmid_f['Year'], flat_f6_upmid_f['Percentage'], 'tab:red')
 axs[1, 0].set_title('Upper Middle Income')
+axs[1, 0].set_xlim(left=1980, right=2015)
+axs[1, 0].set_ylim(bottom=0, top=100)
 axs[1, 1].plot(flat_f6_high_m['Year'], flat_f6_high_m['Percentage'], 'tab:blue')
 axs[1, 1].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:red')
 axs[1, 1].set_title('High Income')
+axs[1, 1].set_xlim(left=1980, right=2015)
+axs[1, 1].set_ylim(bottom=0, top=100)
 
 
 for ax in axs.flat:
@@ -292,8 +298,6 @@ for ax in axs.flat:
 
 plt.suptitle('Percentage of Older Males vs Older Females Living Rurally')
 plt.tight_layout(pad=1.08, h_pad=None, w_pad=None)
-plt.ylim(0, 100)
-plt.xlim(1980, 2015)
 
 st.pyplot(fig=fig_f6)
 
