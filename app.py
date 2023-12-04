@@ -219,14 +219,12 @@ sel_age = st.selectbox(
        'Age_group', age_list, key = 'f6')
 
 
-###HIGH INCOME - MALE###
-#temp data frame for high income
-f6_high_m = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Male") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'High income')].reset_index()
+##########Data Frame creation for graphs#############
 
-#high income formatting a functioning table for the graph and graph
+###HIGH INCOME - MALE###
+f6_high_m = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Male") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'High income')].reset_index()
 gr_f6_high_m = f6_high_m.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_high_m = gr_f6_high_m.reset_index()
-#plot_f6_high_m = go.Scatter(flat_f6_high, x = "Year", y = "Percentage", color = 'Sex', mode = 'lines', title = 'High Income')
 
 ###HIGH INCOME - FEMALE###
 f6_high_f = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Female") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'High income')].reset_index()
@@ -234,46 +232,52 @@ gr_f6_high_f = f6_high_f.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_high_f = gr_f6_high_f.reset_index()
 
 
+###UPPER MIDDLE INCOME - MALE###
+f6_upmid_m = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Male") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Upper middle income')].reset_index()
+gr_f6_upmid_m = f6_upmid_m.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_upmid_m = gr_f6_upmid_m.reset_index()
 
-###upper middle income###
-#temp data frame for upper middle income
-#f6_upmid = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] != "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Upper middle income')].reset_index()
+###UPPER MIDDLE - FEMALE###
+f6_upmid_f = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Female") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Upper middle income')].reset_index()
+gr_f6_upmid_f = f6_upmid_f.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_upmid_f = gr_f6_upmid_f.reset_index()
 
-#upper middle income formatting a functioning table for the graph and graph
-#gr_f6_upmid = f6_upmid.groupby(['Sex', 'Year'])['Percentage'].mean()
-##flat_f6_upmid = gr_f6_upmid.reset_index()
-#plot_f6_upmid = go.Scatter(flat_f6_upmid, x = "Year", y = "Percentage", color = 'Sex', mode = 'lines', title = 'Upper Middle Income')
+###LOWER MIDDLE INCOME - MALE###
+f6_lowmid_m = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Male") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Lower middle income')].reset_index()
+gr_f6_lowmid_m = f6_lowmid_m.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_lowmid_m = gr_f6_lowmid_m.reset_index()
 
-###lower middle income###
-#temp data frame for lower middle income
-#f6_lowmid = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] != "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Lower middle income')].reset_index()
+###LOWER MIDDLE - FEMALE###
+f6_lowmid_f = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Female") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Lower middle income')].reset_index()
+gr_f6_lowmid_f = f6_lowmid_f.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_lowmid_f = gr_f6_lowmid_f.reset_index()
 
-#lower middle income formatting a functioning table for the graph
-#gr_f6_lowmid = f6_lowmid.groupby(['Sex', 'Year'])['Percentage'].mean()
-#flat_f6_lowmid = gr_f6_lowmid.reset_index()
-#plot_f6_lowmid = go.Scatter(flat_f6_lowmid, x = "Year", y = "Percentage", color = 'Sex', mode = 'lines', title = 'Lower Middle Income')
 
-###low income###
-#temp data frame for low income
-#f6_low = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] != "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Low Income')].reset_index()
+###LOWER MIDDLE INCOME - MALE###
+f6_low_m = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Male") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Low income')].reset_index()
+gr_f6_low_m = f6_low_m.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_low_m = gr_f6_low_m.reset_index()
 
-#low income formatting a functioning table for the graph
-#gr_f6_low = f6_low.groupby(['Sex', 'Year'])['Percentage'].mean()
-#flat_f6_low = gr_f6_low.reset_index()
-#plot_f6_low = go.Scatter(flat_f6_low, x = "Year", y = "Percentage", color = 'Sex', mode = 'lines', title = 'Low Income')
+###LOWER MIDDLE - FEMALE###
+f6_low_f = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Female") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Low income')].reset_index()
+gr_f6_low_f = f6_low_f.groupby(['Sex', 'Year'])['Percentage'].mean()
+flat_f6_low_f = gr_f6_low_f.reset_index()
 
 
 ###GRAPH CREATION###
 
 fig_f6, axs = plt.subplots(2, 2)
-axs[0, 0].plot(flat_f6_high_m['Year'], flat_f6_high_m['Percentage'], 'tab:blue')
-axs[0, 0].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:red')
+axs[0, 0].plot(flat_f6_low_m['Year'], flat_f6_low_m['Percentage'], 'tab:blue')
+axs[0, 0].plot(flat_f6_low_f['Year'], flat_f6_low_f['Percentage'], 'tab:red')
 #axs[0, 0].set_title('Axis [0, 0]')
-axs[0, 1].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:red')
+axs[0, 1].plot(flat_f6_lowmid_m['Year'], flat_f6_lowmid_m['Percentage'], 'tab:blue')
+axs[0, 1].plot(flat_f6_lowmid_f['Year'], flat_f6_lowmid_f['Percentage'], 'tab:red')
 #axs[0, 1].set_title('Axis [0, 1]')
-axs[1, 0].plot(flat_f6_high_m['Year'], flat_f6_high_m['Percentage'], 'tab:green')
+axs[1, 0].plot(flat_f6_upmid_m['Year'], flat_f6_upmid_m['Percentage'], 'tab:blue')
+axs[1, 0].plot(flat_f6_upmid_f['Year'], flat_f6_upmid_f['Percentage'], 'tab:red')
 #axs[1, 0].set_title('Axis [1, 0]')
-axs[1, 1].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:orange')
+axs[1, 1].plot(flat_f6_high_m['Year'], flat_f6_high_m['Percentage'], 'tab:blue')
+axs[1, 1].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:red')
 #axs[1, 1].set_title('Axis [1, 1]')
 
 #for ax in axs.flat:
