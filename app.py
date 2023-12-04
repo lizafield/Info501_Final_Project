@@ -267,6 +267,7 @@ flat_f6_high_f = gr_f6_high_f.reset_index()
 
 fig_f6, axs = plt.subplots(2, 2)
 axs[0, 0].plot(flat_f6_high_m['Year'], flat_f6_high_m['Percentage'], 'tab:blue')
+axs[0, 0].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:red')
 #axs[0, 0].set_title('Axis [0, 0]')
 axs[0, 1].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:red')
 #axs[0, 1].set_title('Axis [0, 1]')
