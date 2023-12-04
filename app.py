@@ -265,14 +265,14 @@ flat_f6_high_f = gr_f6_high_f.reset_index()
 
 ###GRAPH CREATION###
 
-#fig_f6, axs = plt.subplots(2, 2)
-#axs[0, 0].plot(flat_f6_high_m['Year'], f6_high_m['Percentage'], 'tab:blue')
+fig_f6, axs = plt.subplots(2, 2)
+axs[0, 0].plot(flat_f6_high_m['Year'], flat_f6_high_m['Percentage'], 'tab:blue')
 #axs[0, 0].set_title('Axis [0, 0]')
-#axs[0, 1].plot(flat_f6_high_f['Year'], f6_high_f['Percentage'], 'tab:red')
+axs[0, 1].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:red')
 #axs[0, 1].set_title('Axis [0, 1]')
-#axs[1, 0].plot(flat_f6_high_m['Year'], f6_high_m['Percentage'], 'tab:green')
+axs[1, 0].plot(flat_f6_high_m['Year'], flat_f6_high_m['Percentage'], 'tab:green')
 #axs[1, 0].set_title('Axis [1, 0]')
-#axs[1, 1].plot(flat_f6_high_f['Year'], f6_high_f['Percentage'], 'tab:orange')
+axs[1, 1].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:orange')
 #axs[1, 1].set_title('Axis [1, 1]')
 
 #for ax in axs.flat:
@@ -282,7 +282,7 @@ flat_f6_high_f = gr_f6_high_f.reset_index()
 #for ax in axs.flat:
     #ax.label_outer()
 
-#st.pyplot(fig=fig_f6)
+st.pyplot(fig=fig_f6)
 st.dataframe(flat_f6_high_m)
 
 
