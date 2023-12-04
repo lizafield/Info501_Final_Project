@@ -19,18 +19,6 @@ rural_data = 'Rural_vs_Urban_date.csv'
 
 
 # ------------------------------------------------------
-#                        CONFIG
-# ------------------------------------------------------
-#load_dotenv()
-
-#load Backblaze connection
-#b2 = B2(endpoint=os.environ['B2_ENDPOINT'],
-       #key_id=os.environ['B2_KEYID'],
-       #secret_key=os.environ['B2_APPKEY'])
-
-
-
-# ------------------------------------------------------
 #                         APP
 # ------------------------------------------------------
 
@@ -231,7 +219,6 @@ f6_high_f = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] =
 gr_f6_high_f = f6_high_f.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_high_f = gr_f6_high_f.reset_index()
 
-
 ###UPPER MIDDLE INCOME - MALE###
 f6_upmid_m = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Male") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Upper middle income')].reset_index()
 gr_f6_upmid_m = f6_upmid_m.groupby(['Sex', 'Year'])['Percentage'].mean()
@@ -252,7 +239,6 @@ f6_lowmid_f = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex']
 gr_f6_lowmid_f = f6_lowmid_f.groupby(['Sex', 'Year'])['Percentage'].mean()
 flat_f6_lowmid_f = gr_f6_lowmid_f.reset_index()
 
-
 ###LOWER MIDDLE INCOME - MALE###
 f6_low_m = rural_df.loc[(rural_df['Age group'] == sel_age) & (rural_df['Sex'] == "Male") & (rural_df['Residence area'] == 'Rural') & (rural_df['World bank income group'] == 'Low income')].reset_index()
 gr_f6_low_m = f6_low_m.groupby(['Sex', 'Year'])['Percentage'].mean()
@@ -267,23 +253,23 @@ flat_f6_low_f = gr_f6_low_f.reset_index()
 ###GRAPH CREATION###
 
 fig_f6, axs = plt.subplots(2, 2)
-axs[0, 0].plot(flat_f6_low_m['Year'], flat_f6_low_m['Percentage'], 'tab:blue')
-axs[0, 0].plot(flat_f6_low_f['Year'], flat_f6_low_f['Percentage'], 'tab:red')
+axs[0, 0].plot(flat_f6_low_m['Year'], flat_f6_low_m['Percentage'], 'tab:blue', label="Male")
+axs[0, 0].plot(flat_f6_low_f['Year'], flat_f6_low_f['Percentage'], 'tab:red', label="Female")
 axs[0, 0].set_title('Low Income')
 axs[0, 0].set_xlim(left=1980, right=2015)
 axs[0, 0].set_ylim(bottom=0, top=100)
-axs[0, 1].plot(flat_f6_lowmid_m['Year'], flat_f6_lowmid_m['Percentage'], 'tab:blue')
-axs[0, 1].plot(flat_f6_lowmid_f['Year'], flat_f6_lowmid_f['Percentage'], 'tab:red')
+axs[0, 1].plot(flat_f6_lowmid_m['Year'], flat_f6_lowmid_m['Percentage'], 'tab:blue', label="Male")
+axs[0, 1].plot(flat_f6_lowmid_f['Year'], flat_f6_lowmid_f['Percentage'], 'tab:red', label="Female")
 axs[0, 1].set_title('Lower Middle Income')
 axs[0, 1].set_xlim(left=1980, right=2015)
 axs[0, 1].set_ylim(bottom=0, top=100)
-axs[1, 0].plot(flat_f6_upmid_m['Year'], flat_f6_upmid_m['Percentage'], 'tab:blue')
-axs[1, 0].plot(flat_f6_upmid_f['Year'], flat_f6_upmid_f['Percentage'], 'tab:red')
+axs[1, 0].plot(flat_f6_upmid_m['Year'], flat_f6_upmid_m['Percentage'], 'tab:blue', label="Male")
+axs[1, 0].plot(flat_f6_upmid_f['Year'], flat_f6_upmid_f['Percentage'], 'tab:red', label="Female")
 axs[1, 0].set_title('Upper Middle Income')
 axs[1, 0].set_xlim(left=1980, right=2015)
 axs[1, 0].set_ylim(bottom=0, top=100)
-axs[1, 1].plot(flat_f6_high_m['Year'], flat_f6_high_m['Percentage'], 'tab:blue')
-axs[1, 1].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:red')
+axs[1, 1].plot(flat_f6_high_m['Year'], flat_f6_high_m['Percentage'], 'tab:blue', label="Male")
+axs[1, 1].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:red', label="Female")
 axs[1, 1].set_title('High Income')
 axs[1, 1].set_xlim(left=1980, right=2015)
 axs[1, 1].set_ylim(bottom=0, top=100)
@@ -292,12 +278,10 @@ axs[1, 1].set_ylim(bottom=0, top=100)
 for ax in axs.flat:
    ax.set(xlabel='Year', ylabel='Percentage')
 
-# Hide x labels and tick labels for top plots and y ticks for right plots.
-#for ax in axs.flat:
-    #ax.label_outer()
 
 plt.suptitle('Percentage of Older Males vs Older Females Living Rurally')
 plt.tight_layout(pad=1.08, h_pad=None, w_pad=None)
+plt.legend(loc="upper left")
 
 st.pyplot(fig=fig_f6)
 
