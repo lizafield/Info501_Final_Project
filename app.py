@@ -269,19 +269,19 @@ flat_f6_low_f = gr_f6_low_f.reset_index()
 fig_f6, axs = plt.subplots(2, 2)
 axs[0, 0].plot(flat_f6_low_m['Year'], flat_f6_low_m['Percentage'], 'tab:blue')
 axs[0, 0].plot(flat_f6_low_f['Year'], flat_f6_low_f['Percentage'], 'tab:red')
-#axs[0, 0].set_title('Axis [0, 0]')
+axs[0, 0].set_title('Low Income')
 axs[0, 1].plot(flat_f6_lowmid_m['Year'], flat_f6_lowmid_m['Percentage'], 'tab:blue')
 axs[0, 1].plot(flat_f6_lowmid_f['Year'], flat_f6_lowmid_f['Percentage'], 'tab:red')
-#axs[0, 1].set_title('Axis [0, 1]')
+#axs[0, 1].set_title('Lower Middle Income')
 axs[1, 0].plot(flat_f6_upmid_m['Year'], flat_f6_upmid_m['Percentage'], 'tab:blue')
 axs[1, 0].plot(flat_f6_upmid_f['Year'], flat_f6_upmid_f['Percentage'], 'tab:red')
-#axs[1, 0].set_title('Axis [1, 0]')
+#axs[1, 0].set_title('Upper Middle Income')
 axs[1, 1].plot(flat_f6_high_m['Year'], flat_f6_high_m['Percentage'], 'tab:blue')
 axs[1, 1].plot(flat_f6_high_f['Year'], flat_f6_high_f['Percentage'], 'tab:red')
-#axs[1, 1].set_title('Axis [1, 1]')
+#axs[1, 1].set_title('High Income')
 
-#for ax in axs.flat:
-   # ax.set(xlabel='x-label', ylabel='y-label')
+for ax in axs.flat:
+   ax.set(xlabel='Year', ylabel='Percentage of Population Living Rurally')
 
 # Hide x labels and tick labels for top plots and y ticks for right plots.
 #for ax in axs.flat:
