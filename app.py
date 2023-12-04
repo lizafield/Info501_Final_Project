@@ -289,6 +289,7 @@ for ax in axs.flat:
     #ax.label_outer()
 
 plt.suptitle('Percentage of Older Males vs Older Females Living Rurally')
+plt.margins(x = 4, y = 4)
 
 st.pyplot(fig=fig_f6)
 
