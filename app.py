@@ -290,7 +290,8 @@ for ax in axs.flat:
 
 plt.suptitle('Percentage of Older Males vs Older Females Living Rurally')
 plt.tight_layout(pad=1.08, h_pad=None, w_pad=None)
-plt.axis([1980 2015 0 100])
+plt.ylim(0, 100)
+plt.xlim(1980, 2015)
 
 st.pyplot(fig=fig_f6)
 
