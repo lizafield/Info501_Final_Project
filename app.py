@@ -148,7 +148,8 @@ st.plotly_chart(fig4)
 st.write(
 '''
 ### Which Countries had the Highest and Lowest portions of their Older Populations living Rurally?
-Which countries yada yada  
+Use the slider below to select a year, then click either the Rural or Urban button.  
+The Rural button will show the 10 countries with the highest percentage of their 60+ population living in rural areas, while the Urban button will show the 10 countries with the lowest population percentage of their 60+ population living in rural areas.
 '''
 )
 
@@ -181,9 +182,10 @@ flat_f5h = sorted_f5h.reset_index()
 #create toggle for highest and lowest
 st.button('Rural', key='f5pt2')
 if st.button('Urban'):
-  
+  st.subheader("Lowest Rural 60+ Population Countries")
   st.dataframe(flat_f5)
 else: 
+  st.subheader("Highest Rural 60+ Population Countries")
   st.dataframe(flat_f5h)
 
 
