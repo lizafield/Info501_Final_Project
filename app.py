@@ -155,9 +155,13 @@ Which countries yada yada
 #list of years to select from
 year_list5 = rural_df.Year.unique()
 
-#dropdown selection for an individual year
+#slider selection for an individual year
 sel_year5 = st.select_slider(
-       'Year', options = year_list5, key = 'f5')
+       'Which year?', options = year_list5, key = 'f5')
+
+#slider selection for number of records
+sel_rec5 = st.select_slider(
+      'How many records?', 0, 50, 1)
 
 #temp data frame for selected year
 sel_year5_df = rural_df.loc[(rural_df['Age group'] == '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year5)].reset_index()
@@ -169,8 +173,6 @@ grouped_f5 = sel_year5_df.groupby(['Country'])['Percentage'].mean()
 sorted_f5 = grouped_f5.sort_values().head(10)
 flat_f5 = sorted_f5.reset_index()
 
-#lowest table
-#st.dataframe(flat_f5)
 
 #-----Highest Table
 
@@ -179,12 +181,11 @@ grouped_f5h = sel_year5_df.groupby(['Country'])['Percentage'].mean()
 sorted_f5h = grouped_f5h.sort_values(ascending=False).head(10)
 flat_f5h = sorted_f5h.reset_index()
 
-#highest table
-#st.dataframe(flat_f5h)
 
 #create toggle for highest and lowest
 st.button('Rural', key='f5pt2')
 if st.button('Urban'):
+  
   st.dataframe(flat_f5)
 else: 
   st.dataframe(flat_f5h)
