@@ -161,7 +161,7 @@ sel_year5 = st.select_slider(
 
 #slider selection for number of records
 sel_rec5 = st.select_slider(
-      'How many records?', 0, 50, 1)
+      'How many records?', 5, 50, 1)
 
 #temp data frame for selected year
 sel_year5_df = rural_df.loc[(rural_df['Age group'] == '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year5)].reset_index()
