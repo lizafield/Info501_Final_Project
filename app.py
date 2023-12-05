@@ -48,7 +48,7 @@ df_rural_60_mf = rural_df.loc[(rural_df['Age group'] == '60+') & (rural_df['Sex'
 st.write(
 '''
 ### Rural Populations 1980 to 2015
-Below are graphs depicting the change in people aged 60+ living in rural areas.  Countries are grouped by World Bank Income Groups (figure 1) and WHO Region (figure 2). 
+Below are graphs depicting the change over time in people aged 60+ living in rural areas.  Countries are grouped by World Bank Income Groups (figure 1) and WHO Region (figure 2). 
 '''
 )
 
@@ -67,6 +67,7 @@ st.line_chart(flat_f1, x = 'Year', y = 'Percentage', color = 'World bank income 
 grouped_f2 = df_rural_60_mf.groupby(['WHO region', 'Year'])['Percentage'].mean()
 flat_f2 = grouped_f2.reset_index()
 
+st.subheader("Rural Population Based on Region")
 st.line_chart(flat_f2, x = 'Year', y = 'Percentage', color = 'WHO region', 
                width = 1000, height = 600)
 
@@ -78,7 +79,7 @@ st.line_chart(flat_f2, x = 'Year', y = 'Percentage', color = 'WHO region',
 st.write(
 '''
 ### Change in Older Populations Living in Rural Areas by Age Group
-Here, you can select a country to see how their older populations living in rural areas have changed over time.  This shows different age groups, starting with 60-64. 
+Here, you can select a country to see how their older populations living in rural areas have changed over time.  Each graph contains 5 lines, for different age groups.  
 '''
 )
 
@@ -114,8 +115,8 @@ How do the different age groups compare across the different World Bank income g
 year_list = rural_df.Year.unique()
 
 #dropdown selection for an individual year
-sel_year = st.selectbox(
-       'Year', year_list, key = 'f4')
+sel_year = st.select_slider(
+       'Year', options = year_list, key = 'f4')
 
 #temp data frame for selected year
 sel_year_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year)].reset_index()
