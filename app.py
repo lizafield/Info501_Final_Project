@@ -183,10 +183,10 @@ flat_f5h = sorted_f5h.reset_index()
 st.button('Rural', key='f5pt2')
 if st.button('Urban'):
   st.subheader("Lowest Rural 60+ Population Countries")
-  st.dataframe(flat_f5)
+  st.dataframe(flat_f5, width = 50 hide_index = True)
 else: 
   st.subheader("Highest Rural 60+ Population Countries")
-  st.dataframe(flat_f5h)
+  st.dataframe(flat_f5h, width = 50,  hide_index = True)
 
 
 
