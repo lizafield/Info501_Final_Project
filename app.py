@@ -57,6 +57,7 @@ Below are graphs depicting the change in people aged 60+ living in rural areas. 
 grouped_f1 = df_rural_60_mf.groupby(['World bank income group', 'Year'])['Percentage'].mean()
 flat_f1 = grouped_f1.reset_index()
 
+st.subheader('Rural Population Based on Country's Income Level')
 st.line_chart(flat_f1, x = 'Year', y = 'Percentage', color = 'World bank income group',
                width = 1000, height = 600)
 
