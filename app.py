@@ -149,7 +149,7 @@ st.write(
 '''
 ### Which Countries had the Highest and Lowest portions of their Older Populations living Rurally?
 Use the slider below to select a year, then click either the Rural or Urban button.  
-The Rural button will show the 10 countries with the highest percentage of their 60+ population living in rural areas, while the Urban button will show the 10 countries with the lowest population percentage of their 60+ population living in rural areas.
+The Rural button will show the 10 countries with the highest percentage of their 60+ population living in rural areas, while the Urban button will show the 10 countries with the lowest percentage of their 60+ population living in rural areas.
 '''
 )
 
