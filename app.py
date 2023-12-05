@@ -107,14 +107,14 @@ st.line_chart(flat_f3, x = 'Year', y = 'Percentage', color = 'Age group')
 st.write(
 '''
 ### Age Groups living Rurally by Economic Level
-How do the different age groups compare across the different World Bank income groups?  See the chart below.  
+How do the different age groups compare across the different World Bank income groups?  See the chart below.  Use the slider to watch how the numbers change over time. 
 '''
 )
 
 #list of years to select from
 year_list = rural_df.Year.unique()
 
-#dropdown selection for an individual year
+#slider selection for an individual year
 sel_year = st.select_slider(
        'Year', options = year_list, key = 'f4')
 
@@ -156,11 +156,11 @@ Which countries yada yada
 year_list5 = rural_df.Year.unique()
 
 #dropdown selection for an individual year
-sel_year5 = st.selectbox(
-       'Year', year_list5, key = 'f5')
+sel_year5 = st.select_slider(
+       'Year', options = year_list5, key = 'f5')
 
 #temp data frame for selected year
-sel_year5_df = rural_df.loc[(rural_df['Age group'] != '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year5)].reset_index()
+sel_year5_df = rural_df.loc[(rural_df['Age group'] == '60+') & (rural_df['Sex'] == "Both sexes") & (rural_df['Residence area'] == 'Rural') & (rural_df['Year'] == sel_year5)].reset_index()
 
 #-----Lowest Table
 
