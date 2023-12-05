@@ -183,10 +183,10 @@ flat_f5h = sorted_f5h.reset_index()
 st.button('Rural', key='f5pt2')
 if st.button('Urban'):
   st.subheader("Lowest Rural 60+ Population Countries")
-  st.dataframe(flat_f5, width = 50, hide_index = True)
+  st.dataframe(flat_f5, width = 500, hide_index = True)
 else: 
   st.subheader("Highest Rural 60+ Population Countries")
-  st.dataframe(flat_f5h, width = 50,  hide_index = True)
+  st.dataframe(flat_f5h, width = 500,  hide_index = True)
 
 
 
@@ -200,7 +200,7 @@ else:
 st.write(
 '''
 ### How do men and women compare across different economic regions?
-Which countries yada yada  
+Use the graphs below to see how men and women compare across time in each of the World Bank Income Groups.  You can use the drop-down to select different age groups, to see if you can find any trends. 
 '''
 )
 
@@ -213,7 +213,7 @@ age_list = f6_df.Age_group.unique()
 
 #dropdown selection for an individual year
 sel_age = st.selectbox(
-       'Age_group', age_list, key = 'f6')
+       'Age group (Hint: 60+ is for all people over 60)', age_list, key = 'f6')
 
 
 ##########Data Frame creation for graphs#############
@@ -297,7 +297,6 @@ plt.tight_layout(pad=1.08, h_pad=None, w_pad=None)
 
 st.pyplot(fig=fig_f6)
 
-st.dataframe(flat_f6_high_m)
 
 
 
