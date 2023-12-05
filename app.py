@@ -183,7 +183,7 @@ flat_f5h = sorted_f5h.reset_index()
 #st.dataframe(flat_f5h)
 
 #create toggle for highest and lowest
-st.button('Rural', key=f5pt2)
+st.button('Rural', key='f5pt2')
 if st.button('Urban'):
   st.dataframe(flat_f5)
 else: 
